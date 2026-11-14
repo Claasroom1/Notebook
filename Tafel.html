@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Tafel-App für Schüler</title>
+<meta name="theme-color" content="#5b5bd6">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- iPad/iPhone: als App vom Home-Bildschirm (Safari › Teilen › Zum Home-Bildschirm) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- nicht „translucent“: sonst liegt die obere Leiste (⚙) unter Uhr/Akku und ist nicht antippbar -->
+<meta name="apple-mobile-web-app-title" content="Tafel">
+<link rel="apple-touch-icon" href="app/icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="app/icons/icon-192.png">
+<link rel="stylesheet" href="app/tafel.css">
+</head>
+<body>
+<canvas id="cMain"></canvas>
+<canvas id="cLive"></canvas>
+<canvas id="cOver"></canvas>
+
+<div id="topbar">
+  <button class="tb" id="bArchiv" title="Tafel: Startseite, neue Tafel, beenden, sperren, abmelden">📁<span class="tbtxt"> Tafel</span> ▾</button>
+  <label class="tblabel" for="titel">Dateiname:</label>
+  <input id="titel" spellcheck="false" title="Name der Tafel – antippen zum Ändern" placeholder="z. B. Brüche 7b">
+  <button class="badge" id="ablageInfo" title="Lehrkraft, Fach und Datum ändern"></button>
+  <span class="spacer"></span>
+  <span id="status"></span>
+  <span id="stiftInfo" title="Was zuletzt auf die Tafel getippt hat"></span>
+  <button class="tb" id="bSave" title="Speichern: Tafel speichern · Seite oder Auswahl zu „Meine Aufgaben“ (Strg+S speichert sofort)">💾<span class="tbtxt"> Speichern</span> ▾</button>
+  <button class="tb" id="bExport" title="Import: PowerPoint, Word, PDF, Bilder · Export: PNG, PDF, Tafel-Datei">⇅<span class="tbtxt"> Import / Export</span></button>
+  <button class="tb" id="bVideo" title="Video &amp; Aufnahme: Anschrieb aufnehmen (Video, Stop-Motion) · Videos abspielen (Datei, YouTube) · Kamera und Fenster als Hintergrund">🎬<span class="tbtxt"> Video &amp; Aufnahme</span> ▾</button>
+  <button class="tb" id="bAnim" title="Animation: Effekte, Start (Klick/Zeit) und Reihenfolge der Seite – Bereich rechts ein-/ausblenden">✨<span class="tbtxt"> Animation</span></button>
+  <button class="tb" id="bPraes" title="Präsentieren: Bildschirmpräsentation starten · Animationen bearbeiten">▶<span class="tbtxt"> Präsentieren</span> ▾</button>
+  <button class="tb" id="bThema" title="Hell / Dunkel / Automatisch">🌓</button>
+  <button class="tb" id="bSettings" title="Einstellungen">⚙</button>
+  <button class="tb" id="bFull" title="Vollbild">⛶</button>
+</div>
+
+<div id="dock"></div>
+<div id="toolbar"></div>
+<div id="selbar"></div>
+<div id="nav">
+  <button id="navAlles" title="Alles zeigen: zoomt so, dass alles auf dieser Seite sichtbar ist">⤢</button>
+  <button id="navPlus" title="Hineinzoomen">＋</button>
+  <button id="zoomInfo" title="Zoom – antippen: 100 %">100 %</button>
+  <button id="navMinus" title="Herauszoomen">−</button>
+  <button id="navHome" title="Zum Anfang der Seite (100 %)">⌂</button>
+  <button id="navSeite" title="Bedienseite wechseln (Pult links / Mitte / rechts)">⇆</button>
+</div>
+<div id="pop" class="pop"></div>
+<div id="modal"><div class="dlg" id="dlg"></div></div>
+<div id="archiv"></div>
+<div id="toast"></div>
+<div id="wisch"></div>
+<div id="druck"></div>
+
+<script src="app/kern.js"></script>
+<script src="app/werkzeuge.js"></script>
+<script src="app/eingabe.js"></script>
+<script src="app/bausteine.js"></script>
+<script src="app/karten.js"></script>
+<script src="app/flexibel.js"></script>
+<script src="app/karten2.js"></script>
+<script src="app/speicher.js"></script>
+<script src="app/aufgaben.js"></script>
+<script src="app/oberflaeche.js"></script>
+<script src="app/notizen.js"></script>
+<script src="app/rechner.js"></script>
+<script src="app/classroom.js"></script>
+<script src="app/plotter.js"></script>
+<script src="app/uebungen.js"></script>
+<script src="app/gebete.js"></script>
+<script src="app/geogebra.js"></script>
+<script src="app/rechenwege.js"></script>
+<script src="app/teiler.js"></script>
+<script src="app/tastatur.js"></script>
+<script src="app/aufdecken.js"></script>
+<script src="app/zettel.js"></script>
+<script src="app/stiftplus.js"></script>
+<script src="app/classroom2.js"></script>
+<script src="app/dokimport.js"></script>
+<script src="app/minikarte.js"></script>
+<script src="app/palette.js"></script>
+<script src="app/uebeditor.js"></script>
+<script src="app/deutsch.js"></script>
+<script src="app/ablauf.js"></script>
+<script src="app/geruest.js"></script>
+<script src="app/kamera.js"></script>
+<script src="app/pptimport.js"></script>
+<script src="app/aufnahme.js"></script>
+<script src="app/meineaufgaben.js"></script>
+<script src="app/paket3a.js"></script>
+<script src="app/paket3b.js"></script>
+<script src="app/skelettbilder.js"></script>
+<script src="app/figuren.js"></script>
+<script src="app/zuordnen.js"></script>
+<script src="app/koerpergriffe.js"></script>
+<script src="app/puzzle.js"></script>
+<script src="app/bruchstuecke.js"></script>
+<script src="app/geodreieck_erkl.js"></script>
+<script src="app/schraegbild.js"></script>
+<script src="app/dreiecke_erkl.js"></script>
+<script src="app/stunde.js"></script>
+<script src="app/wirtschaft.js"></script>
+<script src="app/klassenleben.js"></script>
+<script src="app/erarbeiten.js"></script><script src="app/feiern.js"></script>
+<script src="app/geld.js"></script>
+<script src="app/folie.js"></script>
+<script src="app/schueler.js"></script><!-- Schüler-Version: Lösungen verdeckt – nur in dieser Kopie -->
+<script src="app/vorlagen-kern.js"></script><!-- Vorlagen-Grundlagen, Seitengriffe (gemeinsam mit der Lehrkräfte-Version) -->
+<script src="app/heft.js"></script><!-- 📒 Hausaufgaben & Notizen (gemeinsam) -->
+<script src="app/mitschrift.js"></script><!-- 📝 Mitschrift- und Lernvorlagen, 🗂 Vokabeltrainer (gemeinsam) -->
+<script src="app/schueler-vorlagen.js"></script><!-- Schüler-Version: ohne Stundenablauf, leere Wirtschafts-Vorlagen -->
+<script src="app/sicherung.js"></script><!-- 💾 Sicherung & Wiederherstellen (gemeinsam) -->
+<script>
+  // Installierbar/offline nur, wenn die App über eine Web-Adresse läuft (nicht beim Öffnen als Datei)
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
