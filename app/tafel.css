@@ -966,6 +966,8 @@ body.seite-links.notizFrei.notizAuf #nreiter { left: var(--dockW); }
 .ma-kasten { margin-top: 12px; border-color: #a78bfa; background: #f3eefe; }
 .ma-kasten h4 { color: #5b21b6; }
 .ma-kasten .big:not(.prim) { background: #fff; border-color: #c4b5fd; }
+.ma-kasten.vl-kasten { border-color: #34d399; background: #ecfdf5; } .ma-kasten.vl-kasten h4 { color: #047857; } .ma-kasten.vl-kasten .big:not(.prim) { border-color: #6ee7b7; } /* 📌 Vorlage: grün statt violett */
+:root[data-theme="dark"] .ma-kasten.vl-kasten { background: rgba(52,211,153,.14); } :root[data-theme="dark"] .ma-kasten.vl-kasten h4 { color: #6ee7b7; }
 :root[data-theme="dark"] .sp-kasten { background: rgba(245,158,11,.14); }
 :root[data-theme="dark"] .sp-kasten h4 { color: #fcd34d; }
 :root[data-theme="dark"] .ma-kasten { background: rgba(167,139,250,.16); }
@@ -1689,3 +1691,16 @@ body.seitenAuf:not(.seitenFrei):not(.seite-links) #nreiter.links-leiste, body.se
 #feierBanner .flamme { transform-origin: center 46px; transform-box: view-box; animation: flackern 1.6s ease-in-out infinite alternate; }
 #feierBanner .flamme:nth-of-type(2) { animation-delay: .4s; }
 @keyframes flackern { 0% { transform: scale(1, 1) rotate(-2deg); } 50% { transform: scale(.92, 1.06) rotate(2deg); } 100% { transform: scale(1.04, .95) rotate(-1deg); } }
+/* 🪑 Sitzplan: großes Fenster über der Tafel – oben die Knöpfe, darunter der Raum (passt sich der Größe an) */
+#sitzplanBox { position: fixed; inset: 60px 14px 14px 14px; z-index: 38; display: flex; flex-direction: column; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; }
+#sitzplanBox .sp-kopf { display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--surface2); }
+#sitzplanBox .sp-kopf b { font-size: 20px; }
+#sitzplanBox .sp-hinweis { font-size: 14px; color: var(--muted); }
+#sitzplanBox .sp-leiste { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+#sitzplanBox .sp-gruppe { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+#sitzplanBox .sp-gruppe > b { font-size: 14px; color: var(--muted); }
+#sitzplanBox .sp-gruppe .big { min-height: 42px; padding: 0 12px; font-size: 15px; }
+#sitzplanBox .sp-gruppe .feld { height: 42px; font-size: 16px; }
+#sitzplanBox .sp-klein { font-size: 13px; color: var(--muted); }
+#sitzplanBox .sp-flaeche { flex: 1; min-height: 0; padding: 8px; touch-action: none; background: var(--bg); }
+#sitzplanBox .sp-flaeche svg { display: block; }

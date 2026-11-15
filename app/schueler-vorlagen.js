@@ -20,7 +20,16 @@ for (const k of ['wi_maslow', 'wi_bedarf', 'wi_gueter', 'wi_prinzip', 'wi_kreisl
   Bk.felder = []; delete Bk.schnell; /* Namen/Beispiele/Überhänge ein-aus: gibt es leer nicht */
 }
 
-// Einfügen: Kategorie „📋 Stunde & Rückmeldung“ heißt hier „📝 Mitschrift & Lernen“
+// ---------- Alle Bildtafeln mit 🙈 Erarbeiten (Fach-Tafeln, Klassenleben, Lernen, Erklärtafeln …) kommen unausgefüllt ----------
+// Nur die Überschrift bleibt, alle übrigen Texte sind zarte Linien zum Hineinschreiben. Aufdecken gibt es nicht (Lösung = Sache der Lehrkraft).
+for (const k of Object.keys(B)) {
+  const Bk = B[k]; if (!Bk || !Bk.__gen || typeof Bk.gen !== 'function') continue; /* __gen = von erarbeiten.js eingerichtet */
+  const g0 = Bk.gen; Bk.gen = (d, P) => g0({ ...d, erarbeiten: true, offen: [] }, P);
+  const t0 = Bk.tippen; Bk.tippen = (o, id) => (/^t\d+$/.test(id) ? undefined : (t0 && t0(o, id)));
+  const s0 = Bk.schnell; Bk.schnell = d => (typeof s0 === 'function' ? s0(d) : (s0 || [])).filter(q => !(q && /Erarbeiten|aufdecken|verdecken|Texte|Zahlen anpassen/i.test(q.l || '')));
+}
+
+// Einfügen: Kategorie „📋 Stunde & Rückmeldung“ heißt hier „📝 Mitschrift & Lernen“ (ältere Fassung – die Kategorie gibt es inzwischen nicht mehr)
 nachDemZeichnen.push(() => {
   document.querySelectorAll('button').forEach(b => { for (const n of b.childNodes) if (n.nodeType === 3 && n.nodeValue.includes('📋 Stunde & Rückmeldung')) n.nodeValue = n.nodeValue.replace('📋 Stunde & Rückmeldung', '📝 Mitschrift & Lernen'); });
 });
