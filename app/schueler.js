@@ -28,14 +28,14 @@
   nachDemZeichnen.push(() => document.querySelectorAll('.bm-tab .bm-name').forEach(n => {
     if (!n.classList.contains('bm-gesamt') && WEG.test(n.textContent) && !n.textContent.includes('☑')) { /* ☑ Umfang u / Flächeninhalt A = welche Formel im Kasten steht – bleibt */ n.nextElementSibling && n.nextElementSibling.nextElementSibling && n.nextElementSibling.nextElementSibling.remove(); n.nextElementSibling && n.nextElementSibling.remove(); n.remove(); } }));
 
-  // ---------- 3D-Körper: Volumen V und Oberfläche O gibt es nicht (Kantenlängen sind Angaben und bleiben) ----------
+  // ---------- 3D-Körper: Volumen V und Oberfläche O wie bei den Flächen – nur die allgemeine Formel (Kantenlängen sind Angaben und bleiben) ----------
+  // V und O stehen im 🧮 Formelkasten neben dem Körper (koerpergriffe.js, kern.js): der Formelkasten oben zeigt hier nur die Zeile „Formel“
+  // (Sorte Ff, z. B. V = π · r² · h), Rechnung und Ergebnis gibt es nicht – auch kein „?“ und keine Menüpunkte dafür (Bemaßung-Tabelle oben).
   for (const k of ['wuerfel', 'quader', 'pyramide', 'prisma', 'zylinder', 'kegel', 'kugel']) {
     const Bk = B[k]; if (!Bk || !Bk.gen) continue;
     const alt = Bk.gen;
-    Bk.gen = (d, P) => alt({ ...d, volumen: false, oberflaeche: false }, P);
-    if (Array.isArray(Bk.felder)) Bk.felder = Bk.felder.filter(f => f.k !== 'volumen' && f.k !== 'oberflaeche');
+    Bk.gen = (d, P) => alt({ ...d, volumen: false, oberflaeche: false }, P); /* im Bild selbst nie ein Ergebnis (ältere koerpergriffe.js schrieb V/O unter den Körper) */
   }
-  if (T.chipZeile) { const alt = T.chipZeile; T.chipZeile = (liste, ...r) => alt(Array.isArray(liste) ? liste.filter(c => !(c && /^(Volumen V|Oberfläche O)$/.test(c.title || ''))) : liste, ...r); } /* Symbolzeile ohne 📦 🧱 */
 
   // ---------- 📐 Figur (Winkel einstellbar): eingestellte Winkel bleiben, die mitgerechneten (γ, δ …) nur als Bogen; keine Seitenlängen ----------
   if (B.figur && B.figur.gen) {
