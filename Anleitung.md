@@ -38,6 +38,14 @@ Eine digitale Tafel zum Schreiben, Zeichnen, Messen und Üben – gemacht fürs 
 - **📒 Hausaufgabenheft** (oben in der Leiste und auf der Startseite oben rechts – die Zahl zeigt, wie viele Aufgaben offen sind, orange = bis morgen fällig): Fach, Aufgabe und „bis wann“ eintragen, Erledigtes abhaken, dazu ein Feld für **Notizen**. Beim Öffnen der Tafel (und alle 30 Minuten) erinnert sie an alles, was heute oder morgen fällig ist. Mit **🔔 Mitteilungen** kommt die Erinnerung zusätzlich als Mitteilung – aber nur, solange die Tafel geöffnet ist. Die Einträge bleiben nur auf diesem Gerät.
 - **💼 Wirtschaft:** Die Bildtafeln sind leer – die Begriffe schreibst du selbst hinein.
 
+## Belehrungen
+
+- **Einfügen › 🦺 Belehrungen:** die Belehrungen zu Beginn des Schuljahres zum Nachlesen – Feueralarm, Erste Hilfe, Waffen und gefährliche Gegenstände, Krankheit (Infektionsschutz), Schulweg, Pause, Handy und Fotos, Rauchen/Vapes/Alkohol, Fehlen und Entschuldigen, Sport, Fachräume, Eigentum. Was an deiner Schule gilt (z. B. Sammelplatz), sagt dir deine Lehrkraft.
+
+## Datenschutz & Lizenz
+
+- ⚙ Einstellungen › **🔒 Datenschutz & Lizenz**: Alles, was du in der App machst, bleibt auf deinem Gerät bzw. in deinem eigenen Ordner – kein Konto, keine Werbung, kein Tracking.
+
 ## Üben
 
 - **Aufgaben:** fertige Aufgaben zum Üben. Die Lösung ist verdeckt – erst rechnen, dann **„? Lösung“** antippen und vergleichen.
